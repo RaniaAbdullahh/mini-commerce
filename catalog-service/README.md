@@ -3,7 +3,7 @@
 
 ##  Catalog Service `README.md`
 
-```markdown
+
 # Catalog Service
 
 ## Project Overview
