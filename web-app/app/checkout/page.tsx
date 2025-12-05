@@ -8,7 +8,6 @@ import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { apiGet, apiPost, SALES_API } from "@/lib/api";
 
-const TAX_RATE = 0.15; // 15% tax for example
 
 export default function CheckoutPage() {
   const { state, clearCart } = useCart();
@@ -33,7 +32,7 @@ export default function CheckoutPage() {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-  const taxAmount = parseFloat((subtotal * TAX_RATE).toFixed(2));
+  const taxAmount = parseFloat((subtotal * taxRate).toFixed(2));
   const totalWithTax = parseFloat((subtotal + taxAmount).toFixed(2));
 
   const submitOrder = async () => {
@@ -125,7 +124,7 @@ export default function CheckoutPage() {
                   <span>${subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between font-semibold">
-                  <span>Tax ({TAX_RATE * 100}%):</span>
+                  <span>Tax ({taxRate * 100}%):</span>
                   <span>${taxAmount.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between font-bold text-lg mt-2">
