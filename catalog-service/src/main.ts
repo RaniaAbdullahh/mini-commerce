@@ -27,7 +27,7 @@ async function bootstrap() {
   await app.listen(configService.get('PORT'));
 
   Logger.verbose(
-    `Api Documentation https://${configService.get('URL')}${
+    `Api Documentation http://${configService.get('URL')}${
       (configService.get('ENV') === 'dev' && `:${configService.get('PORT')}`) ||
       ''
     }/api/docs`,
